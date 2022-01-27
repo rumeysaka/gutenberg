@@ -1,7 +1,7 @@
-import { Axios } from 'axios';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Card, Button } from 'react-bootstrap';
+import "./Books.css";
+import Deneme from './Deneme';
 
 export default function Books() {
     const [books, setBooks] = useState([]);
@@ -19,7 +19,7 @@ export default function Books() {
           setLoading(false);
         });
     }, []);
-  
+
     console.log(books)
     if (loading) {
       return <p>Data is loading...</p>;
@@ -30,15 +30,21 @@ export default function Books() {
       }
     return (
       <>
+      {/* <Button onClick={denemeHandler}></Button> */}
+      <Deneme books={books}/>
        {books.map((item) => (
           
-            <Card key={item.id} style={{ width: '10rem'}}>
-            <Card.Img variant="top" src={"https://www.gutenberg.org/cache/epub/" +item.id+ "/pg"+ item.id+ ".cover.medium.jpg"} />
+            <Card className='card col-2' key={item.id} style={{ width: '10rem'}}>
+            <Card.Img className='img' variant="top" src={"https://www.gutenberg.org/cache/epub/" +item.id+ "/pg"+ item.id+ ".cover.medium.jpg"} />
             <Card.Body>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Text>{item.bookshelves} 
+              <Card.Title className='title'>{item.title}</Card.Title>
+              <Card.Text className='author'>{item.authors[0].name} </Card.Text>
+              <Card.Text className='text'>{item.bookshelves[0]} 
               </Card.Text>
-              <Button variant="primary">Fav</Button>
+              
+              <Button className='oku-btn btn btn-sm' href={"https://www.gutenberg.org/files/"+item.id+"/"+item.id+"-0.txt"}>Oku</Button>
+              
+              <Button className="btn btn-sm mx-3">Fav</Button>
             </Card.Body>
           </Card>
       //  <Cards key={item.id} title={data.title}/>

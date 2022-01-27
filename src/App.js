@@ -9,7 +9,8 @@ function App() {
       <Menu />
       <div className="row">
       <div className="col-2"><SideMenu /></div>
-      <div className="col-10 my-4"><Cards /></div></div>
+      <div className="col-9 my-4">
+        <div className="row"><Cards /></div></div></div>
     </div>
   );
 }

@@ -4,6 +4,9 @@
 DEPENDENCES
 =====
 */
+.saga{
+  text-align: end;
+}
 
 .r-link{
     display: var(--rLinkDisplay, inline-flex) !important;
