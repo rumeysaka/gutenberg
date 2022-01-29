@@ -32,9 +32,10 @@ export default function Books() {
       <>
       {/* <Button onClick={denemeHandler}></Button> */}
       <Deneme books={books}/>
+      <h2 className='baslık'>Books</h2>
+
        {books.map((item) => (
-          
-            <Card className='card col-2' key={item.id} style={{ width: '10rem'}}>
+            <Card className='card col-2' key={item.id} style={{ width: '25rem'}}>
             <Card.Img className='img' variant="top" src={"https://www.gutenberg.org/cache/epub/" +item.id+ "/pg"+ item.id+ ".cover.medium.jpg"} />
             <Card.Body>
               <Card.Title className='title'>{item.title}</Card.Title>
@@ -42,9 +43,9 @@ export default function Books() {
               <Card.Text className='text'>{item.bookshelves[0]} 
               </Card.Text>
               
-              <Button className='oku-btn btn btn-sm' href={"https://www.gutenberg.org/files/"+item.id+"/"+item.id+"-0.txt"}>Oku</Button>
+              <Button className='oku-btn btn btn-sm' href={"https://www.gutenberg.org/files/"+item.id+"/"+item.id+"-h/"+item.id+"-h.htm"}>Oku</Button>
               
-              <Button className="btn btn-sm mx-3">Fav</Button>
+              <Button className="btn btn-sm">Fav</Button>
             </Card.Body>
           </Card>
       //  <Cards key={item.id} title={data.title}/>
