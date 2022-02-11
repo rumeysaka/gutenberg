@@ -10,13 +10,7 @@ import Sign from "./components/Login/Sign.js";
 function App() {
   return (
     <div>
-      <Menu />
-      <BrowserRouter>
-      <Routes>
-      <Route path="about" element={<About />} />
-      <Route path="signin" element={<Sign />} />
-      </Routes>  
-      </BrowserRouter>
+      
       <div className="row">
       <div className="col-2"><SideMenu /></div>
       <div className="col-9 my-4">

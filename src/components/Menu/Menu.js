@@ -11,9 +11,10 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="m">
-      <Nav.Link href="about">About</Nav.Link>
-      <Link href="signin">Login</Link>
-      <Nav.Link href="signin">Sign Up</Nav.Link>
+      <Link to="/about">About</Link>
+      <Link to="/signin">Login</Link>
+      {/* <Link to="/signin">Login</Link>
+      <Nav.Link href="signin">Sign Up</Nav.Link> */}
       <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
