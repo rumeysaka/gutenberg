@@ -1,18 +1,28 @@
 import React from 'react';
 import "./Menun.css"
+import { Link } from "react-router-dom";
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 
-export default function Menu() {
-  return<>
-  <div className="page">
-  <nav className="page__menu page__custom-settings menu">
-    <ul className="menu__list r-list row">
-      <li className="menu__group col-8"><a href="/" className="menu__link r-link text-underlined">Gutenberg</a></li>
-      <div className='row col-4 saga'>
-      <li className="menu__group col-4 saga"><a href="/about" className="menu__link r-link text-underlined">About</a></li>
-      <li className="menu__group col-3 saga"><a href="/signin" className="menu__link r-link text-underlined">Login</a></li>
-      <li className="menu__group col-3 saga"><a href="/signout" className="menu__link r-link text-underlined">SignUp</a></li></div>
-    </ul>
-  </nav>
-</div>
-</>
-}
+ export default function Menu() {
+   return(<>
+<Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark" id="shadow">
+  <Container>
+  <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="m">
+      <Nav.Link href="about">About</Nav.Link>
+      <Link href="signin">Login</Link>
+      <Nav.Link href="signin">Sign Up</Nav.Link>
+      <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+      </NavDropdown>
+    </Nav>
+  </Navbar.Collapse>
+  </Container>
+</Navbar>
+</>) }
