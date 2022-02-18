@@ -6,10 +6,10 @@ import "./App.css";
 import { useNavigate } from "react-router-dom"
 
 
-export default function Sign(props) {
-  const { user, setUser } = props;
+export default function Sign() {
+  
 
-  // const  [user, setUser] = useState("");
+  const  [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -66,9 +66,9 @@ export default function Sign(props) {
       });
   };
 
-  const handleLogout = () => {
-    fire.auth().signOut();
-  };
+  // const handleLogout = () => {
+  //   fire.auth().signOut();
+  // };
 
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
@@ -82,7 +82,6 @@ export default function Sign(props) {
 
   useEffect(() => {
     authListener();
-    navigateToHome()
   }, []);
   return (
     <div>

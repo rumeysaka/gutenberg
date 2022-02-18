@@ -13,11 +13,13 @@ import {
   Route,
   BrowserRouter,
   Routes,
+  useNavigate,
 } from "react-router-dom";
 
 function App() {
   
   const [user, setUser] = useState("");
+  // const navigate= useNavigate()
 
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
@@ -29,16 +31,22 @@ function App() {
     });
   };
 
+  const handleLogout = () => {
+    fire.auth().signOut();
+    // navigate("/")
+  };
+  
+
   useEffect(() => {
     authListener();
   }, []);
   return (
     <>
       <BrowserRouter>
-        <Menu setUser={setUser} user={user} />
+        <Menu handleLogout={handleLogout} />
         <Routes>
           <Route path="/about" element={<About />} />
-          <Route path="/sign" element={<Sign user={user} setUser={setUser} />} />
+          <Route path="/sign" element={<Sign />} />
         </Routes>
       </BrowserRouter>
       <div className="row">

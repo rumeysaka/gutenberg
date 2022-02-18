@@ -7,7 +7,7 @@ import Btn from "../Btn";
 import { Navigate, Link } from "react-router-dom";
 
 export default function Menu(props) {
-  const { user, setUser } = props;
+  const { user, setUser, handleLogout } = props;
 
   return (
     <>
@@ -38,21 +38,17 @@ export default function Menu(props) {
                   Separated link
                 </NavDropdown.Item>
               </NavDropdown>
-              {!user ? (
-                <Link to="/sign"
+              
+                <Link className="nav-link" to="/sign"
                 >
-                  sign in
+                  Sign In
                 </Link>
-              ) : (
-                <button
-                  onClick={() => {
-                      setUser(false);
-                      
-                  }}
+              
+                <Link className="nav-link" to="/"
+                  onClick={handleLogout}
                 >
                   Log out
-                </button>
-              )}
+                </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
