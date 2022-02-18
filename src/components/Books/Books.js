@@ -3,11 +3,12 @@ import { Card, Button } from 'react-bootstrap';
 import "./Books.css";
 import Deneme from './Deneme';
 
-export default function Books() {
+export default function Books(props) {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
 
+    const {user}= props
   
     useEffect(() => {
       setLoading(true);
@@ -20,7 +21,6 @@ export default function Books() {
         });
     }, []);
 
-    console.log(books)
     if (loading) {
       return <p>Data is loading...</p>;
     }
@@ -30,7 +30,6 @@ export default function Books() {
       }
     return (
       <>
-      {/* <Button onClick={denemeHandler}></Button> */}
       <Deneme books={books}/>
       <h2 className='baslık'>Books</h2>
 
@@ -44,8 +43,7 @@ export default function Books() {
               </Card.Text>
               
               <Button className='oku-btn btn btn-sm' href={"https://www.gutenberg.org/files/"+item.id+"/"+item.id+"-h/"+item.id+"-h.htm"}>Oku</Button>
-              
-              <Button className="btn btn-sm">Fav</Button>
+             {user ? <Button className="btn btn-sm">Fav</Button>: <div></div>}
             </Card.Body>
           </Card>
       //  <Cards key={item.id} title={data.title}/>

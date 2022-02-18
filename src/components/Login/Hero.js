@@ -1,9 +1,9 @@
 import React from 'react';
+import App from '../../App';
 
 export default function Hero({handleLogout}) {
   return <section className='hero'>
       <nav>
-          <h2>Welcome</h2>
           <button onClick={handleLogout}>Log Out</button>
       </nav>
   </section>;
