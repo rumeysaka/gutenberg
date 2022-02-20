@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import fire from "./fire";
 import Login from "./Login";
 import Hero from "./Hero";
-import "./App.css";
+// import "./App.css";
 import { useNavigate } from "react-router-dom"
 
 

@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Menun.css";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import Sign from "../Login/Sign";
 import { Button } from "bootstrap";
 import Btn from "../Btn";
 import { Navigate, Link } from "react-router-dom";
+import { LoginContext } from "../../LoginContext";
 
 export default function Menu(props) {
-  const { user, setUser, handleLogout } = props;
+  const { handleLogout } = props;
+  const { user, setUser } = useContext(LoginContext);
 
   return (
     <>
@@ -39,8 +41,7 @@ export default function Menu(props) {
                 </NavDropdown.Item>
               </NavDropdown>
               
-                <Link className="nav-link" to="/sign"
-                >
+                <Link className="nav-link" to="/sign" >
                   Sign In
                 </Link>
               

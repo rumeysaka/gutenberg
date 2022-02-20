@@ -7,6 +7,11 @@ import About from "./About.js";
 import Sign from "./components/Login/Sign.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import fire from "./components/Login/fire.js";
+import Details from "./components/Books/Details.js"
+import Home from "./Home.js";
+import { LoginContext } from "./LoginContext";
+
+
 import {
   BrowserRouter as Switch,
   Router,
@@ -18,7 +23,7 @@ import {
 
 function App() {
   
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   // const navigate= useNavigate()
 
   const authListener = () => {
@@ -43,11 +48,16 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        
+      <LoginContext.Provider value={{user, setUser}}>
         <Menu handleLogout={handleLogout} />
         <Routes>
+          <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/sign" element={<Sign />} />
-        </Routes>
+          <Route exact path="/profile/:id" element={<Details />} />
+          </Routes>
+          </LoginContext.Provider>
       </BrowserRouter>
       <div className="row">
         <div className="col-2">
