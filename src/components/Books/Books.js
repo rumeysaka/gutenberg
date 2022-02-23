@@ -1,15 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Button } from "react-bootstrap";
 import "./Books.css";
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Deneme from "./Deneme";
+import { LoginContext } from "../../LoginContext";
+import { BooksContext } from "../../BooksContext";
 
 export default function Books(props) {
-  const [books, setBooks] = useState([]);
+  
+  const { user, setUser } = useContext(LoginContext);
+
+  const { books, setBooks, favList, setFavList } = useContext(BooksContext);
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  // const [fav, setFav] = useState(null)
+  // const [favList, setFavList] = useState([])
 
-  const { user } = props;
+
+  const { onHandleFav } = props;
+
+  function handleFav(id){
+    onHandleFav(id)
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -31,8 +44,10 @@ export default function Books(props) {
   }
   return (
     <>
-      <Deneme books={books} />
-      <h2 className="baslık">Books</h2>
+    {/* <BooksContext.Provider value={{books}}> */}
+      {/* <Deneme books={books} />
+       */}
+      <h2 className="d-flex justify-content-center text-light my-4">Books</h2>
 
       {books.map((item) => (
         <Card className="card col-2" key={item.id} style={{ width: "25rem" }}>
@@ -49,7 +64,7 @@ export default function Books(props) {
           />
           <Card.Body>
             <Card.Title className="title">{item.title}</Card.Title>
-            <Card.Text className="author">{item.id} </Card.Text>
+            {/* <Card.Text className="author">{item.id} </Card.Text> */}
             <Card.Text className="author">{item.authors[0].name} </Card.Text>
             <Card.Text className="text">{item.bookshelves[0]}</Card.Text>
             <div className="button-group d-flex justify-content-center align-items-center">
@@ -74,10 +89,11 @@ export default function Books(props) {
               >
                 Oku
               </Button>
-              {user ? <Button className="btn btn-sm">Fav</Button> : <div></div>}
+              {user ? <Button className="btn btn-sm" onClick={()=>onHandleFav(item.id)} >Fav</Button> : <div></div>}
             </div>
           </Card.Body>
         </Card>
+
       ))}
     </>
   );

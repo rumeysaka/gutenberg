@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import fire from "./fire";
 import Login from "./Login";
 import Hero from "./Hero";
 // import "./App.css";
 import { useNavigate } from "react-router-dom"
-
+import { LoginContext } from "../../LoginContext";
 
 export default function Sign() {
   
+  const { user, setUser } = useContext(LoginContext);
 
-  const  [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -70,22 +70,22 @@ export default function Sign() {
   //   fire.auth().signOut();
   // };
 
-  const authListener = () => {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser("");
-      }
-    });
-  };
+  // const authListener = () => {
+  //   fire.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       setUser(user);
+  //     } else {
+  //       setUser("");
+  //     }
+  //   });
+  // };
 
-  useEffect(() => {
-    authListener();
-  }, []);
+  // useEffect(() => {
+  //   authListener();
+  // }, []);
   return (
     <div>
-      {user ? (
+      {{user} ? (
         <>
           {navigateToHome}
         </>

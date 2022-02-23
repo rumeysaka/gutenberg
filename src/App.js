@@ -1,8 +1,9 @@
+import "./App.css"
 import Menu from "./components/Menu/Menu.js";
 import SideMenu from "./components/SideMenu/SideMenu.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cards from "./components/Cards/Cards.js";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import About from "./About.js";
 import Sign from "./components/Login/Sign.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,7 +11,7 @@ import fire from "./components/Login/fire.js";
 import Details from "./components/Books/Details.js"
 import Home from "./Home.js";
 import { LoginContext } from "./LoginContext";
-
+// import { BooksContext } from "./BooksContext";
 
 import {
   BrowserRouter as Switch,
@@ -20,12 +21,23 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
+import FavBooks from "./components/Books/FavBooks";
+import { BooksContext } from "./BooksContext";
 
 function App() {
-  
-  const [user, setUser] = useState(null);
-  // const navigate= useNavigate()
+  const [user, setUser] = useState(false)
+  const [books, setBooks] = useState([])
+  const [favList, setFavList] = useState([])
 
+  
+  const handleFav = (id) => {
+    const updatedFav = books.filter((book) => book.id === id)
+    setFavList([...favList].concat(updatedFav))
+    console.log(favList)
+  }
+  
+  // const navigate= useNavigate()
+  
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -48,18 +60,21 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        
+        <BooksContext.Provider value={{books, setBooks, favList, setFavList}}>
       <LoginContext.Provider value={{user, setUser}}>
-        <Menu handleLogout={handleLogout} />
+          <Menu handleLogout={handleLogout} />
+          <SideMenu />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Home onHandleFav={handleFav} />} />
           <Route path="/about" element={<About />} />
           <Route path="/sign" element={<Sign />} />
           <Route exact path="/profile/:id" element={<Details />} />
+          <Route exact path="/fav" element={<FavBooks  />} />
           </Routes>
           </LoginContext.Provider>
+        </BooksContext.Provider>
       </BrowserRouter>
-      <div className="row">
+      {/* <div className="row">
         <div className="col-2">
           <SideMenu />
         </div>
@@ -68,7 +83,7 @@ function App() {
             <Cards user={user} />
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

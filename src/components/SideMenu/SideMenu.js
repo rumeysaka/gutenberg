@@ -4,7 +4,7 @@
 
  export default function SideMenu() {
    return <div>
-       <Navbar bg="secondary" className="d-inline-flex align-items-start text-light flex-column sidebar">
+       <Navbar bg="secondary" className="d-inline-flex align-items-start bg-secondary text-light flex-column sidebar">
        <div>
          <Nav.Item>
              <Nav.Link className='a-link' href="/">Home

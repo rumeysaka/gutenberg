@@ -1,0 +1,14 @@
+body{background-image: linear-gradient(
+    45deg,
+    hsl(67deg 73% 83%) 0%,
+    hsl(101deg 61% 82%) 0%,
+    hsl(143deg 61% 75%) 1%,
+    hsl(163deg 69% 61%) 4%,
+    hsl(168deg 36% 71%) 8%,
+    hsl(273deg 16% 77%) 17%,
+    hsl(316deg 63% 79%) 30%,
+    hsl(289deg 31% 76%) 49%,
+    hsl(224deg 28% 74%) 73%,
+    hsl(192deg 41% 65%) 100%
+  );
+    }

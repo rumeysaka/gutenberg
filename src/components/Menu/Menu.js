@@ -9,16 +9,17 @@ import { LoginContext } from "../../LoginContext";
 
 export default function Menu(props) {
   const { handleLogout } = props;
+  
   const { user, setUser } = useContext(LoginContext);
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" variant="dark" id="shadow">
+      <Navbar collapseOnSelect expand="lg" variant="dark"id="shadow"  >
         <Container>
-          <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="/" className="">React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="m">
+            <Nav className="mx-auto d-flex justify-content-end">
               <Link className="nav-link" to="/about">
                 About
               </Link>

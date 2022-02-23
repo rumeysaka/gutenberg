@@ -1,8 +1,8 @@
 import React from 'react'
 import Cards from './components/Cards/Cards'
 
-export default function Home() {
+export default function Home({onHandleFav}) {
   return (
-    <div><Cards /></div>
+    <div><Cards onHandleFav={onHandleFav} /></div>
   )
 }
